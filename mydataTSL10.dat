@@ -1,0 +1,206 @@
+param PARAM1;
+param PARAM2;
+
+
+param FETOILE1;
+param FETOILE2;
+
+
+param FETOILE1m;
+param FETOILE2m;
+
+
+param number_appliances := 10;
+
+set DEST := APP1	APP2	APP3	APP4	APP5	APP6	APP7	APP8	APP9	APP10;
+
+param:   minimum_st  maximum_st  prefered_st processing power_processing :=
+APP1	5	23	19	3	0.7533
+APP2	6	23	16	2	1.6993
+APP3	8	20	15	1	1.2796
+APP4	7	21	10	2	2.9002
+APP5	7	18	16	1	1.7942
+APP6	9	18	14	4	3.2319
+APP7	8	21	13	2	1.0455
+APP8	8	23	16	3	1.2914
+APP9	10	24	16	1	0.9366
+APP10	5	18	8	3	0.9082;
+
+
+
+
+ 
+
+# hours
+param H :=24;
+
+
+param C_water := 0.0012;#11.61*pow(10,-4); # kW
+param V_total := 150.00;
+param temp_cold := 10.00;
+
+param R := 18.00; # thermal resistance of the building shell in (C/kW)
+param C := 0.525; #  Heat capacity of indoor air (kWh/C)
+param temp_min := 15.00;
+param temp_max := 24.00;
+
+# Battery data 
+param CHARGING_EFF := 0.95;
+param DISCHARGING_EFF := 0.95;
+param CHARGING_MAX := 3.00;
+param DISCHARGING_MAX := 3.00;
+param SOC_MAX := 1.00;
+param SOC_MIN := 0.20;
+param E_BATTERY := 24.00;
+
+# PEAK 
+param CONTRACTUAL_PEAK :=  3.00; # 3.60;
+param my_alpha := 5.00;
+
+
+
+
+
+ # Electricity price 
+ param	PRICE :=
+	1	13
+	2	13
+	3	13
+	4	13
+	5	13
+	6	13
+	7	13
+	8	27
+	9	27
+	10	27
+	11	27
+	12	27
+	13	27
+	14	36
+	15	36
+	16	36
+	17	36
+	18	36
+	19	36
+	20	27
+	21	27
+	22	13
+	23	13
+	24	13;
+		
+ # base load 
+ param	base_load :=
+	1	0.9719965834
+	2	0.7800982571
+	3	0.7111063648
+	4	0.7034212563
+	5	0.7555792562
+	6	1.0267374664
+	7	1.6578026629
+	8	2.0886149536
+	9	2.0199302389
+	10	1.7781492276
+	11	1.6750521028
+	12	1.6298845834
+	13	1.5144429912
+	14	1.4380955648
+	15	1.3936391243
+	16	1.4632731464
+	17	1.7743914771
+	18	2.382847502
+	19	2.7869699993
+	20	2.7694794842
+	21	2.5701133728
+	22	2.3340050937
+	23	1.9034942247
+	24	1.4606786304;
+		
+	
+		
+param pv_production :=	
+	1	0
+	2	0
+	3	0
+	4	0
+	5	0
+	6	0
+	7	0
+	8	0
+	9	0.044
+	10	0.172
+	11	0.336
+	12	0.621
+	13	0.86
+	14	0.769
+	15	0.584
+	16	0.466
+	17	0.254
+	18	0.036
+	19	0
+	20	0
+	21	0
+	22	0
+	23	0
+	24	0;
+
+
+ # outdoor temp
+param temp_out :=
+1		21
+2		21
+3		21
+4		18
+5		18
+6		18
+7		18
+8		18
+9		22
+10		24
+11		27
+12		28
+13		30
+14		32
+15		33
+16		34
+17		34
+18		34
+19		33
+20		30
+21		28
+22		25
+23		25
+24		22;
+
+		
+
+		
+param  hot_water_usage	:=	
+	1	0
+	2	0
+	3	0
+	4	0
+	5	10
+	6	20
+	7	20
+	8	20
+	9	20
+	10	20
+	11	0
+	12	0
+	13	0
+	14	0
+	15	0
+	16	0
+	17	10
+	18	10
+	19	10
+	20	20
+	21	20
+	22	20
+	23	20
+	24	0;	
+
+				
+	
+		
+

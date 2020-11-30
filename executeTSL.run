@@ -1,0 +1,108 @@
+
+# LOAD THE MODEL 
+
+#model mymodelTSL.mod;# without.mod; # mymodelTSL.mod;  pv.mod;  mymodelTSL.mod; #
+
+#LOAD THE DATA
+data mydataTSL10.dat;
+
+# CHANGE THE SOLVER 
+option solver cplex;
+
+# SOLVE 
+
+option cplex_options 'timelimit 15'; 
+
+
+param nnruns := 100;
+param PARAM11;
+param PARAM22;
+
+param sum_PARAM;
+param  Total_Cost_DISPLAY {1..nruns,1..4};
+#param PARAM1;
+#param PARAM2;
+
+
+objective my_fitness1;
+solve; 
+let FETOILE1 :=  my_fitness1;
+
+
+objective my_fitness2;
+solve;
+let FETOILE2 :=  my_fitness2;
+
+
+
+
+
+display FETOILE1;
+display FETOILE2;
+
+
+
+
+
+objective my_fitness1m;
+solve; 
+let FETOILE1m :=  my_fitness1m;
+
+
+objective my_fitness2m;
+solve;
+let FETOILE2m :=  my_fitness2m;
+
+
+
+display FETOILE1m;
+display FETOILE2m;
+
+
+objective my_fitness;
+for {k in 1..nnruns} {
+objective my_fitness;
+#option randseed 0;
+let PARAM11 := Uniform01();
+
+let PARAM22 := Uniform(0, 100);
+#let sum_PARAM :=  PARAM11 +  PARAM22;
+let PARAM1 := PARAM11; # (PARAM11 / sum_PARAM) ;
+
+#let PARAM2 := (PARAM22 / sum_PARAM) ;
+
+solve;
+let Total_Cost_DISPLAY[k,1] := (Total_Cost-REVENUE_AMOUNT);
+
+let Total_Cost_DISPLAY[k,2] := discomfort_level;
+
+
+let Total_Cost_DISPLAY[k,3] := REVENUE_AMOUNT;
+let Total_Cost_DISPLAY[k,4] := my_fitness;
+
+
+
+
+display _varname, _var; # Variables
+display _objname, _obj; # Objective
+#display _conname, _con; # Constraints
+
+
+}
+#################################################################################################
+
+#SHOW RESULTS
+display _varname, _var; # Variables
+display _objname, _obj; # Objective
+#display _conname, _con; # Constraints
+
+display Total_Cost_DISPLAY;
+
+display _total_solve_time;
+
+#################################################################################################
+
+
+
+
+
